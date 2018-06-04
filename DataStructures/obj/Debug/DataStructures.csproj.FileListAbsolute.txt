@@ -1,0 +1,9 @@
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\bin\DataStructures.dll.config
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\bin\DataStructures.dll
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\bin\DataStructures.pdb
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\obj\Debug\DataStructures.csprojResolveAssemblyReference.cache
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\obj\Debug\DataStructures.csproj.CoreCompileInputs.cache
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\obj\Debug\DataStructures.dll
+E:\Dev\TypeScript\TsAlgorithm\DataStructures\obj\Debug\DataStructures.pdb
