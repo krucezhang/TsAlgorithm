@@ -2,11 +2,11 @@ namespace DATASTRUCTURE {
     "use strict";
     export class LinkedList {
 
-        private head: LinkedListNode = null;
-        private tail: LinkedListNode = null;
+        public head: LinkedListNode = null;
+        public tail: LinkedListNode = null;
         private compare: Comparator = null;
 
-        constructor(comparatorFunction: Function) {
+        constructor(comparatorFunction?: Function) {
             this.head = null;
             this.tail = null;
             this.compare = new Comparator(comparatorFunction);

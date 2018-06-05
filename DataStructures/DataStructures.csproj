@@ -94,16 +94,19 @@
     <Content Include="test\lib\jasmine.css" />
     <Content Include="test\lib\jasmine.js" />
     <Content Include="test\TestLinked\index.html" />
+    <Content Include="test\TestStack\index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="stack\Stack.ts" />
     <TypeScriptCompile Include="test\lib\jasmine.d.ts" />
     <TypeScriptCompile Include="linked-list\LinkedList.ts" />
     <TypeScriptCompile Include="linked-list\LinkedListNode.ts" />
     <TypeScriptCompile Include="test\TestLinked\TestLinkedList.ts" />
+    <TypeScriptCompile Include="test\TestStack\TestStack.ts" />
     <TypeScriptCompile Include="utils\Comparator.ts" />
   </ItemGroup>
   <ItemGroup />

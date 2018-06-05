@@ -4,6 +4,7 @@
 
 /packages
 /.vs
+/DataStructures/*/*.js
 /DataStructures/bin
 /DataStructures/obj
 /DataStructures/Properties
