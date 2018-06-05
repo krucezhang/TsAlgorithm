@@ -5,6 +5,7 @@
 /packages
 /.vs
 /DataStructures/*/*.js
+/DataStructures/*/*.map
 /DataStructures/bin
 /DataStructures/obj
 /DataStructures/Properties
