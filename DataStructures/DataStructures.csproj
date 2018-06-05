@@ -101,6 +101,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="queue\Queue.ts" />
     <TypeScriptCompile Include="stack\Stack.ts" />
     <TypeScriptCompile Include="test\lib\jasmine.d.ts" />
     <TypeScriptCompile Include="linked-list\LinkedList.ts" />
