@@ -9,3 +9,8 @@
 /DataStructures/bin
 /DataStructures/obj
 /DataStructures/Properties
+/TsAdvance/*/*.js
+/TsAdvance/*/*.map
+/TsAdvance/bin
+/TsAdvance/obj
+/TsAdvance/Properties
