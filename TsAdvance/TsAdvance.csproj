@@ -107,6 +107,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="advancetype\DiscriminatedUnions.ts" />
+    <TypeScriptCompile Include="advancetype\IntersectionTypes.ts" />
+    <TypeScriptCompile Include="advancetype\StringType.ts" />
+    <TypeScriptCompile Include="advancetype\TypeAlias.ts" />
+    <TypeScriptCompile Include="advancetype\TypeGuardDiffTypes.ts" />
+    <TypeScriptCompile Include="advancetype\UnionTypes.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
