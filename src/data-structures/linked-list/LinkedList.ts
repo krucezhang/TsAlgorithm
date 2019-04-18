@@ -96,7 +96,7 @@ class LinkedList {
     public deleteTail() {
         const deleteTail = this.tail;
 
-        if(this.head === this.tail){
+        if (this.head === this.tail) {
             this.head = null;
             this.tail = null;
 
@@ -106,9 +106,9 @@ class LinkedList {
         let currentNode = this.head;
 
         while (currentNode.next) {
-            if(!currentNode.next.next){
+            if (!currentNode.next.next) {
                 currentNode.next = null;
-            }else{
+            } else {
                 currentNode = currentNode.next;
             }
         }
@@ -118,7 +118,29 @@ class LinkedList {
         return deleteTail;
     }
 
-    public fromArray(values: any[]){
+    public find(findObj: {value: any, callback: Function}) {
+        if (!this.head) {
+            return null;
+        }
+
+        let currentNode = this.head;
+
+        while (currentNode) {
+            if (findObj.callback && findObj.callback(currentNode.value)) {
+                return currentNode;
+            }
+
+            if (findObj.value !== void 0 && this.compare.equal(currentNode.value, findObj.value)) {
+                return currentNode;
+            }
+
+            currentNode = currentNode.next;
+        }
+
+        return null;
+    }
+
+    public fromArray(values: any[]) {
         values.forEach(value => this.append(value));
 
         return this;
@@ -140,12 +162,12 @@ class LinkedList {
         return this.toArray().map(node => node.toString(callback)).toString();
     }
 
-    public reverse(){
+    public reverse() {
         let currentNode = this.head;
         let prevNode = null;
         let nextNode = null;
 
-        while(currentNode){
+        while (currentNode) {
             nextNode = currentNode.next;
             currentNode.next = prevNode;
 
