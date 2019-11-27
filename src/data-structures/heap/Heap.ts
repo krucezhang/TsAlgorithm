@@ -66,38 +66,6 @@ class Heap {
         return this.heapContainer.toString();
     }
 
-    public heapifyUp(customStartIndex: number = 0) {
-        let currentIndex = customStartIndex || this.heapContainer.length - 1;
-
-        while (
-            this.hasParent(currentIndex)
-            && !this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])) {
-            this.swap(currentIndex, this.getParentIndex(currentIndex));
-            currentIndex = this.getParentIndex(currentIndex);
-        }
-    }
-
-    public heapifyDown(customStartIndex: number = 0) {
-        let currentIndex = customStartIndex;
-        let nextIndex = null;
-
-        while (this.hasLeftChild(currentIndex)) {
-            if (this.hasRightChild(currentIndex)
-                && this.pairIsInCorrectOrder(this.rightChild(currentIndex), this.leftChild(currentIndex))) {
-                nextIndex = this.getRightChildIndex(currentIndex);
-            } else {
-                nextIndex = this.getLeftChildIndex(currentIndex);
-            }
-
-            if (this.pairIsInCorrectOrder(this.heapContainer[currentIndex], this.heapContainer[nextIndex])) {
-                break;
-            }
-
-            this.swap(currentIndex, nextIndex);
-            currentIndex = nextIndex;
-        }
-    }
-
     public peek() {
         if (this.heapContainer.length === 0) {
             return null;
@@ -150,6 +118,51 @@ class Heap {
         return foundItemIndices;
     }
 
+    /***
+     * 获取最后一个元素（数组中的最后一个或者树的左下角）
+     * 在堆容器中，并将其向上交换直到正确的位置
+     */
+    public heapifyUp(customStartIndex: number = 0) {
+        let currentIndex = customStartIndex || this.heapContainer.length - 1;
+
+        while (
+            this.hasParent(currentIndex)
+            && !this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])) {
+            this.swap(currentIndex, this.getParentIndex(currentIndex));
+            currentIndex = this.getParentIndex(currentIndex);
+        }
+    }
+
+    /***
+     * 将父元素与其子元素进行比较，并将父元素与对应子元素进行交换
+     */
+    public heapifyDown(customStartIndex: number = 0) {
+        let currentIndex = customStartIndex;
+        let nextIndex = null;
+
+        while (this.hasLeftChild(currentIndex)) {
+            if (this.hasRightChild(currentIndex)
+                && this.pairIsInCorrectOrder(this.rightChild(currentIndex), this.leftChild(currentIndex))) {
+                nextIndex = this.getRightChildIndex(currentIndex);
+            } else {
+                nextIndex = this.getLeftChildIndex(currentIndex);
+            }
+
+            if (this.pairIsInCorrectOrder(this.heapContainer[currentIndex], this.heapContainer[nextIndex])) {
+                break;
+            }
+
+            this.swap(currentIndex, nextIndex);
+            currentIndex = nextIndex;
+        }
+    }
+
+    /***
+     * 
+     * 检查堆元素对的顺序是否正确。
+     * 对于MinHeap，第一个元素必须始终小于或等于。
+     * 对于MaxHeap，第一个元素必须始终大于或等于。
+     */
     public pairIsInCorrectOrder(firstElement, secondElement): boolean {
         throw new Error(`
             You have to implement heap pair comparision method
