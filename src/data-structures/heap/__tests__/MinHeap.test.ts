@@ -1,4 +1,5 @@
 import { MinHeap } from "../MinHeap";
+import { Comparator } from "../../../utils/Comparator";
 
 describe('MinHeap', () => {
     it('should create an empty min heap', () => {
@@ -72,6 +73,27 @@ describe('MinHeap', () => {
         expect(minHeap.toString()).toBe('');
     });
 
+    it('should be possible to remove items from heap with custom finding comparator', () => {
+        const minHeap = new MinHeap();
+        minHeap.add('dddd');
+        minHeap.add('ccc');
+        minHeap.add('bb');
+        minHeap.add('a');
+
+        expect(minHeap.toString()).toBe('a,bb,ccc,dddd');
+
+        const comparator = new Comparator((a, b) => {
+            if (a.length === b.length) {
+                return 0;
+            }
+
+            return a.length < b.length ? -1 : 1;
+        });
+
+        minHeap.remove('hey', comparator);
+        expect(minHeap.toString()).toBe('a,bb,dddd');
+    });
+
     it('should be possible to find item indices in heap', () => {
         const minHeap = new MinHeap();
 
@@ -85,4 +107,26 @@ describe('MinHeap', () => {
         expect(minHeap.find(3)).toEqual([0]);
         expect(minHeap.find(11)).toEqual([1, 4]);
     })
+
+    it('should remove values from heap and correctly re-order the tree', () => {
+        const minHeap = new MinHeap();
+
+        minHeap.add(1);
+        minHeap.add(2);
+        minHeap.add(3);
+        minHeap.add(4);
+        minHeap.add(5);
+        minHeap.add(6);
+        minHeap.add(7);
+        minHeap.add(8);
+        minHeap.add(9);
+
+        expect(minHeap.toString()).toBe('1,2,3,4,5,6,7,8,9');
+
+        minHeap.remove(2);
+        expect(minHeap.toString()).toBe('1,4,3,8,5,6,7,9');
+
+        minHeap.remove(4);
+        expect(minHeap.toString()).toBe('1,5,3,8,9,6,7');
+    });
 });

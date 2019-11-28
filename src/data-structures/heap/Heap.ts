@@ -98,15 +98,41 @@ class Heap {
         return item;
     }
 
-    public remove(item, comparator = this.compare){
+    public remove(item, comparator = this.compare) {
+        // find number of items to remove
         const numberOfItemsToRemove = this.find(item, comparator).length;
 
         for (let iteration = 0; iteration < numberOfItemsToRemove; iteration++) {
+            // we need to find item index to remove each time after removeal 
+            // since indices are being changed after each heapify process
             const indexToRemove = this.find(item, comparator).pop();
+
+            /**
+             * If we need to remove last child in the heap then just remove it.
+             * there is no need to heapify the heap afterwards
+             */
+            if (indexToRemove === (this.heapContainer.length - 1)) {
+                this.heapContainer.pop();
+            } else {
+                this.heapContainer[indexToRemove] = this.heapContainer.pop();
+
+                const parentItem = this.parent(indexToRemove);
+
+                if (this.hasLeftChild(indexToRemove)
+                    && (!parentItem
+                        || this.pairIsInCorrectOrder(parentItem, this.heapContainer[indexToRemove]))) {
+                    this.heapifyDown(indexToRemove);
+                } else {
+                    this.heapifyUp(indexToRemove);
+                }
+            }
         }
+
+        return this;
     }
 
     public find(item: any, comparator = this.compare) {
+
         const foundItemIndices: number[] = [];
 
         for (let itemIndex = 0; itemIndex < this.heapContainer.length; itemIndex++) {
@@ -125,8 +151,7 @@ class Heap {
     public heapifyUp(customStartIndex: number = 0) {
         let currentIndex = customStartIndex || this.heapContainer.length - 1;
 
-        while (
-            this.hasParent(currentIndex)
+        while (this.hasParent(currentIndex)
             && !this.pairIsInCorrectOrder(this.parent(currentIndex), this.heapContainer[currentIndex])) {
             this.swap(currentIndex, this.getParentIndex(currentIndex));
             currentIndex = this.getParentIndex(currentIndex);
