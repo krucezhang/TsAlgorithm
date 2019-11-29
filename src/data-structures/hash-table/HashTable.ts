@@ -8,6 +8,7 @@ class HashTable {
     public keys: any = null;
 
     constructor(hashTableSize = defaultHashTableSize) {
+        // 创建一个默认大小的hashtable，并且给每一个bucket填充一个空的链表
         this.buckets = Array(hashTableSize).fill(null).map(() => new LinkedList());
         this.keys = {};
     }

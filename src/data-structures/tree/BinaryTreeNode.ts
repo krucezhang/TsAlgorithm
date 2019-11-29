@@ -36,20 +36,20 @@ class BinaryTreeNode {
         return Math.max(this.leftHeight, this.rightHeight);
     }
 
-    public setValue(value: any){
+    public setValue(value: any) {
         this.value = value;
 
         return this;
     }
 
-    public setLeft(node: BinaryTreeNode){
-        if(this.left){
+    public setLeft(node: BinaryTreeNode) {
+        if (this.left) {
             this.left.parent = null;
         }
 
         this.left = node;
 
-        if(this.left){
+        if (this.left) {
             this.left.parent = this;
         }
 
