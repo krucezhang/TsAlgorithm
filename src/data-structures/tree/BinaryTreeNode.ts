@@ -36,10 +36,37 @@ class BinaryTreeNode {
         return Math.max(this.leftHeight, this.rightHeight);
     }
 
+    public get balanceFactor() {
+        return this.leftHeight - this.rightHeight;
+    }
+
     public setValue(value: any) {
         this.value = value;
 
         return this;
+    }
+
+    public get uncle() {
+        // Check if current node has parent.
+        if (!this.parent) {
+            return undefined;
+        }
+
+        // Check if current node has grand-parent.
+        if (!this.parent.parent) {
+            return undefined;
+        }
+
+        // Check if grand-parent has two children
+        if (!this.parent.parent.left || !this.parent.parent.right) {
+            return undefined;
+        }
+
+        if (this.nodeComparator.equal(this.parent, this.parent.parent.left)) {
+            return this.parent.parent.right;
+        }
+
+        return this.parent.parent.left;
     }
 
     public setLeft(node: BinaryTreeNode) {
@@ -51,6 +78,20 @@ class BinaryTreeNode {
 
         if (this.left) {
             this.left.parent = this;
+        }
+
+        return this;
+    }
+
+    public setRight(node: BinaryTreeNode){
+        if(this.right){
+            this.right.parent = null;
+        }
+
+        this.right = node;
+
+        if(node){
+            this.right.parent = this;
         }
 
         return this;
